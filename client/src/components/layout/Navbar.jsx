@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
-        style={{ background: scrolled ? '#0A0A0A' : 'transparent', boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.8)' : 'none' }}
+        style={{ background: scrolled ? '#ffffff' : 'transparent', boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.15)' : 'none' }}
       >
         {/* Gold bottom border on scroll */}
         <div
@@ -51,7 +51,7 @@ const Navbar = () => {
                 src="/assets/suvarnaLogo.jpg"
                 alt="Suvarna Event Management"
                 className="object-contain"
-                style={{ height: '90px', width: 'auto', maxWidth: '220px', borderRadius: '50%' }}
+                style={{ height: '55px', width: 'auto', maxWidth: '160px', borderRadius: '50%' }}
               />
             </button>
 
@@ -62,9 +62,9 @@ const Navbar = () => {
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
                   className="font-montserrat text-sm relative group transition-colors duration-300"
-                  style={{ color: 'rgba(255,255,255,0.85)' }}
+                  style={{ color: scrolled ? '#1A1A1A' : 'rgba(255,255,255,0.85)' }}
                   onMouseEnter={e => e.currentTarget.style.color = '#D4AF37'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.85)'}
+                  onMouseLeave={e => e.currentTarget.style.color = scrolled ? '#1A1A1A' : 'rgba(255,255,255,0.85)'}
                 >
                   {link.label}
                   <span
@@ -98,9 +98,10 @@ const Navbar = () => {
               </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden w-10 h-10 flex items-center justify-center text-white transition-colors duration-300"
+                className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors duration-300"
+                style={{ color: scrolled ? '#1A1A1A' : '#ffffff' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#D4AF37'}
-                onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={e => e.currentTarget.style.color = scrolled ? '#1A1A1A' : '#ffffff'}}
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
