@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { ChevronUp } from 'lucide-react';
 
-import LoadingScreen from './components/sections/LoadingScreen';
+import TopBar from './components/layout/TopBar';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
@@ -11,7 +11,6 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -22,39 +21,40 @@ const App = () => {
 
   return (
     <>
-      {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-
       <BrowserRouter>
-        <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
-          <Navbar />
+        <TopBar />
+        <Navbar />
+        <div style={{ paddingTop: '80px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Footer />
-          <WhatsAppButton />
-
-          {/* Back to top */}
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed z-40 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
-            style={{
-              bottom: '96px',
-              right: '24px',
-              background: '#D4AF37',
-              boxShadow: '0 4px 20px rgba(212,175,55,0.3)',
-              opacity: showTop ? 1 : 0,
-              transform: showTop ? 'translateY(0)' : 'translateY(16px)',
-              pointerEvents: showTop ? 'auto' : 'none',
-            }}
-            aria-label="Back to top"
-          >
-            <ChevronUp size={18} style={{ color: '#0A0A0A' }} />
-          </button>
         </div>
+        <Footer />
+        <WhatsAppButton />
+
+        {/* Back to top */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed z-40 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300"
+          style={{
+            bottom: '96px', right: '24px',
+            background: '#1A1A8C',
+            boxShadow: '0 4px 20px rgba(26,26,140,0.3)',
+            opacity: showTop ? 1 : 0,
+            transform: showTop ? 'translateY(0)' : 'translateY(16px)',
+            pointerEvents: showTop ? 'auto' : 'none',
+          }}
+          aria-label="Back to top"
+        >
+          <ChevronUp size={18} style={{ color: '#CC2299' }} />
+        </button>
       </BrowserRouter>
 
-      <Toaster position="top-center" />
+      <Toaster position="top-center" toastOptions={{
+        style: { fontFamily: 'Poppins', fontSize: '14px' },
+        success: { iconTheme: { primary: '#CC2299', secondary: '#fff' } },
+      }} />
     </>
   );
 };

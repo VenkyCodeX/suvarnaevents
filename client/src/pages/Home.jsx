@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from '../components/sections/Hero';
 import MarqueeStrip from '../components/sections/Marquee';
 import Services from '../components/sections/Services';
-import WhyUs from '../components/sections/WhyUs';
+import Stats from '../components/sections/Stats';
 import Gallery from '../components/sections/Gallery';
 import About from '../components/sections/About';
 import Testimonials from '../components/sections/Testimonials';
@@ -15,7 +15,7 @@ const Home = () => (
     <Hero />
     <MarqueeStrip />
     <Services />
-    <WhyUs />
+    <Stats />
     <Gallery />
     <About />
     <Testimonials />

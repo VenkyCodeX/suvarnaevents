@@ -1,9 +1,24 @@
+export const COLORS = {
+  navy: '#1A1A8C',
+  navyDeep: '#12127A',
+  navyLight: '#E8E8F8',
+  magenta: '#CC2299',
+  magentaDeep: '#A01A7A',
+  magentaLight: '#F8E6F4',
+  white: '#FFFFFF',
+  warmWhite: '#FAFAFA',
+  black: '#1A1A1A',
+  grey: '#444444',
+  midGrey: '#888888',
+  lightGrey: '#F0F0F0',
+};
+
 export const SITE = {
   name: 'Suvarna Event Management',
   tagline: 'Creating moments that last forever.',
   phone: '090106 46727',
   whatsapp: '919010646727',
-  email: 'info@suvarnaevents.in',
+  email: 'info@suvarnaevents.com',
   address: 'Himayath Nagar Village, Chilkur Balaji Temple Rd, Moinabad, Hyderabad, Telangana - 500075',
   rating: '4.8',
   reviews: '68',
@@ -14,7 +29,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
+  { label: 'About Us', href: '#about' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -23,61 +38,45 @@ export const SERVICES = [
   {
     icon: '💍',
     title: 'Wedding Planning',
-    description: 'From mandap decoration to guest management — your dream wedding, flawlessly executed.',
+    description: 'Complete Telugu wedding management — from mandap to reception, flawlessly done.',
   },
   {
     icon: '🎊',
     title: 'Reception & Sangeet',
-    description: 'Vibrant themed receptions and energetic sangeet nights that your guests will never forget.',
+    description: 'Vibrant themed nights your guests will remember forever.',
   },
   {
-    icon: '💍',
-    title: 'Engagement Ceremonies',
-    description: 'Beautiful engagement setups with floral arrangements, lighting and perfect décor.',
+    icon: '💫',
+    title: 'Engagement Ceremony',
+    description: 'Elegant setups with flowers, lighting and beautiful décor.',
   },
   {
     icon: '🎂',
     title: 'Birthday Celebrations',
-    description: 'Kids or adults — we create magical birthday experiences with themes, décor and entertainment.',
+    description: 'Magical themed parties for kids and adults alike.',
   },
   {
     icon: '🏢',
     title: 'Corporate Events',
-    description: 'Conferences, product launches, team events — professional execution every time.',
+    description: 'Conferences, launches, team outings — executed with precision.',
   },
   {
     icon: '🌸',
     title: 'Traditional Ceremonies',
-    description: 'Haldi, baby showers, naming ceremonies — handled with cultural sensitivity and elegance.',
+    description: 'Haldi, baby showers, naming ceremonies — handled with love and cultural care.',
   },
 ];
 
-export const WHY_US = [
-  {
-    icon: '⭐',
-    title: '4.8 Google Rated',
-    description: 'Trusted by 68+ families and corporates across Hyderabad',
-  },
-  {
-    icon: '🎯',
-    title: 'End-to-End Management',
-    description: 'From planning to execution — we handle everything so you don\'t have to',
-  },
-  {
-    icon: '🕐',
-    title: 'Open 24 Hours',
-    description: 'We\'re always available — because great events don\'t follow business hours',
-  },
-  {
-    icon: '💰',
-    title: 'All Budgets Welcome',
-    description: 'From intimate to grand — we deliver excellence at every budget',
-  },
+export const STATS = [
+  { value: 100, suffix: '+', label: 'Events Done' },
+  { value: 4.8, suffix: '★', label: 'Google Rated' },
+  { value: 24, suffix: '/7', label: 'Available' },
+  { value: 500, suffix: '+', label: 'Happy Guests' },
 ];
 
 export const TESTIMONIALS = [
   {
-    text: 'Suvarana Events is the best. They handled all my sister\'s wedding events and decorations, and everything was amazing and very professional. Sunny, the owner, is a very kind and genuine person. He does not treat it like a normal event. He takes it personally and plans everything as if it is his own sister\'s wedding. Now he feels like part of our family. Sunny and his team are truly hardworking and dedicated. He delivered everything exactly as promised and even better than our expectations. We will definitely choose him again for our future family events. Highly recommended to anyone who wants a perfect and stress-free event.',
+    text: 'Suvarana Events is the best. They handled all my sister\'s wedding events and decorations, and everything was amazing and very professional. Sunny, the owner, is a very kind and genuine person. He takes it personally and plans everything as if it is his own sister\'s wedding. Highly recommended to anyone who wants a perfect and stress-free event.',
     name: 'Surya Prakash',
     event: 'Wedding · Google Review',
     rating: 5,
@@ -89,7 +88,7 @@ export const TESTIMONIALS = [
     rating: 5,
   },
   {
-    text: 'Best event done by mr sunny (suvarna event management). He had done a great decoration for our half saree ceremony. He managed all our requirements very properly and helped us in managing all the things — you can directly leave your event into his hands and you can enjoy your event, he will manage all the things.',
+    text: 'Best event done by mr sunny (suvarna event management). He had done a great decoration for our half saree ceremony. You can directly leave your event into his hands and enjoy — he will manage all the things.',
     name: 'A. Sathwik Chowdary',
     event: 'Half Saree Ceremony · Google Review',
     rating: 5,
@@ -106,24 +105,6 @@ export const TESTIMONIALS = [
     event: 'Birthday Party, January 2025',
     rating: 5,
   },
-  {
-    text: 'Our corporate conference was handled with utmost professionalism. From setup to execution, everything was seamless. Highly recommend for corporate events!',
-    name: 'Vikram Sharma',
-    event: 'Corporate Conference, February 2025',
-    rating: 5,
-  },
-  {
-    text: 'The sangeet night they organized for us was beyond our dreams. The energy, the décor, the lighting — everything was perfect. Worth every rupee!',
-    name: 'Ananya & Karthik',
-    event: 'Sangeet Night, December 2024',
-    rating: 5,
-  },
-  {
-    text: 'From our engagement ceremony to the reception, Suvarna handled everything beautifully. They understood our vision and brought it to life perfectly.',
-    name: 'Meera & Arjun',
-    event: 'Engagement & Reception, November 2024',
-    rating: 5,
-  },
 ];
 
 export const PACKAGES = [
@@ -131,42 +112,25 @@ export const PACKAGES = [
     name: 'Silver',
     price: '₹50,000',
     suffix: 'onwards',
-    features: [
-      'Basic event planning',
-      'Décor setup',
-      'Day-of coordination',
-      'Up to 100 guests',
-    ],
+    features: ['Basic event planning', 'Décor setup', 'Day-of coordination', 'Up to 100 guests'],
     popular: false,
-    dark: false,
+    tier: 'silver',
   },
   {
     name: 'Gold',
     price: '₹1,00,000',
     suffix: 'onwards',
-    features: [
-      'Full event management',
-      'Custom theme & décor',
-      'Vendor coordination',
-      'Photography tie-up',
-      'Up to 300 guests',
-    ],
+    features: ['Full event management', 'Custom theme & décor', 'Vendor coordination', 'Photography tie-up', 'Dedicated coordinator', 'Up to 300 guests'],
     popular: true,
-    dark: true,
+    tier: 'gold',
   },
   {
     name: 'Platinum',
-    price: 'Custom',
-    suffix: 'Quote',
-    features: [
-      'Premium end-to-end management',
-      'Luxury décor & themes',
-      'Dedicated event manager',
-      'Full vendor management',
-      '300+ guests, any scale',
-    ],
+    price: '₹2,00,000',
+    suffix: 'onwards',
+    features: ['Premium end-to-end management', 'Luxury décor & themes', 'Multiple coordinators', 'Full vendor management', 'Post-event highlights video', '300+ guests, any scale'],
     popular: false,
-    dark: false,
+    tier: 'platinum',
   },
 ];
 
@@ -174,23 +138,16 @@ export const GALLERY_CATEGORIES = ['All', 'Weddings', 'Receptions', 'Birthdays',
 
 export const ABOUT_CHECKLIST = [
   'Experienced professional team',
-  'Custom themes and décor',
-  'Vendor and catering coordination',
-  'Photography and videography tie-ups',
-  'On-site event management',
-  'Transparent pricing — no hidden costs',
-];
-
-export const STATS = [
-  { value: '100+', label: 'Events' },
-  { value: '4.8★', label: 'Rating' },
-  { value: '68', label: 'Reviews' },
-  { value: '24/7', label: 'Available' },
+  'Custom themes & décor',
+  'Vendor & catering coordination',
+  'Photography tie-ups',
+  'On-site coordination',
+  'Transparent pricing',
 ];
 
 export const EVENT_TYPES = [
-  'Wedding', 'Engagement', 'Reception', 'Birthday',
-  'Corporate', 'Traditional', 'Anniversary', 'Other',
+  'Wedding', 'Engagement', 'Reception', 'Sangeet', 'Birthday',
+  'Corporate', 'Haldi', 'Baby Shower', 'Anniversary', 'Naming Ceremony', 'Other',
 ];
 
 export const BUDGET_RANGES = [
@@ -200,4 +157,19 @@ export const BUDGET_RANGES = [
   '₹2,00,000 – ₹5,00,000',
   '₹5,00,000+',
   'Custom / Not decided',
+];
+
+export const GALLERY_IMAGES = [
+  { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80', category: 'Weddings', title: 'Grand Wedding Ceremony' },
+  { src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80', category: 'Receptions', title: 'Elegant Reception' },
+  { src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80', category: 'Birthdays', title: 'Birthday Celebration' },
+  { src: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80', category: 'Corporate', title: 'Corporate Event' },
+  { src: 'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=800&q=80', category: 'Traditional', title: 'Traditional Ceremony' },
+  { src: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80', category: 'Weddings', title: 'Wedding Décor' },
+  { src: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80', category: 'Receptions', title: 'Reception Night' },
+  { src: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80', category: 'Birthdays', title: 'Kids Birthday Party' },
+  { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80', category: 'Corporate', title: 'Conference Setup' },
+  { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80', category: 'Weddings', title: 'Bridal Setup' },
+  { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80', category: 'Traditional', title: 'Haldi Ceremony' },
+  { src: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80', category: 'Receptions', title: 'Stage Decoration' },
 ];

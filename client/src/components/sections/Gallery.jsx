@@ -1,186 +1,96 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import SectionLabel from '../ui/SectionLabel';
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { GALLERY_CATEGORIES, GALLERY_IMAGES } from '../../utils/constants';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 
-const ALL_IMAGES = [
-  { id: 1,  title: 'Grand Wedding',        category: 'Weddings',    image: '/assets/Screenshot 2026-05-23 165002.png' },
-  { id: 2,  title: 'Wedding Ceremony',     category: 'Weddings',    image: '/assets/Screenshot 2026-05-23 165020.png' },
-  { id: 3,  title: 'Elegant Reception',    category: 'Receptions',  image: '/assets/Screenshot 2026-05-23 165031.png' },
-  { id: 4,  title: 'Floral Decor',         category: 'Weddings',    image: '/assets/Screenshot 2026-05-23 165043.png' },
-  { id: 5,  title: 'Traditional Ceremony', category: 'Traditional', image: '/assets/Screenshot 2026-05-23 165054.png' },
-  { id: 6,  title: 'Sangeet Night',        category: 'Receptions',  image: '/assets/Screenshot 2026-05-23 165135.png' },
-  { id: 7,  title: 'Birthday Celebration', category: 'Birthdays',   image: '/assets/Screenshot 2026-05-23 165147.png' },
-  { id: 8,  title: 'Corporate Event',      category: 'Corporate',   image: '/assets/Screenshot 2026-05-23 165202.png' },
-  { id: 9,  title: 'Engagement Setup',     category: 'Weddings',    image: '/assets/Screenshot 2026-05-23 165218.png' },
-  { id: 10, title: 'Haldi Ceremony',       category: 'Traditional', image: '/assets/Screenshot 2026-05-23 165234.png' },
-  { id: 11, title: 'Reception Decor',      category: 'Receptions',  image: '/assets/Screenshot 2026-05-23 165246.png' },
-  { id: 12, title: 'Wedding Stage',        category: 'Weddings',    image: '/assets/Screenshot 2026-05-23 165259.png' },
-  { id: 13, title: 'Birthday Party',       category: 'Birthdays',   image: '/assets/Screenshot 2026-05-23 165316.png' },
-  { id: 14, title: 'Cultural Event',       category: 'Traditional', image: '/assets/Screenshot 2026-05-23 165331.png' },
-  { id: 15, title: 'Special Occasion',     category: 'Receptions',  image: '/assets/Screenshot 2026-05-23 165346.png' },
-];
-
-// Split into two rows
-const ROW1 = ALL_IMAGES.slice(0, 8);
-const ROW2 = ALL_IMAGES.slice(7, 15);
-
-const GalleryImage = ({ item, onClick }) => {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      className="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer"
-      style={{
-        width: '320px',
-        height: '220px',
-        border: hovered ? '2px solid #D4AF37' : '2px solid rgba(212,175,55,0.15)',
-        transition: 'border-color 0.3s ease',
-        margin: '0 10px',
-      }}
-      onClick={() => onClick(item)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full h-full object-cover transition-transform duration-500"
-        style={{ transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
-        onLoad={e => e.target.classList.add('loaded')}
-      />
-      {/* Hover overlay */}
-      <div
-        className="absolute inset-0 flex flex-col items-center justify-center gap-2 transition-opacity duration-300"
-        style={{ background: 'rgba(0,0,0,0.65)', opacity: hovered ? 1 : 0 }}
-      >
-        <p className="font-cormorant text-white text-xl font-semibold">{item.title}</p>
-        <span
-          className="font-montserrat uppercase px-3 py-1 rounded-full"
-          style={{ fontSize: '10px', letterSpacing: '0.15em', color: '#0A0A0A', background: '#D4AF37' }}
-        >
-          {item.category}
-        </span>
-      </div>
-    </div>
-  );
-};
-
-// Inline keyframes injected once
-const STYLE = `
-  @keyframes scrollLeft {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes scrollRight {
-    0%   { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-  .scroll-left  { animation: scrollLeft  35s linear infinite; }
-  .scroll-right { animation: scrollRight 35s linear infinite; }
-  .scroll-left:hover,
-  .scroll-right:hover { animation-play-state: paused; }
-`;
-
 const Gallery = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
   const [lightbox, setLightbox] = useState(null);
   const headerRef = useScrollAnimation();
 
-  const lightboxNav = (dir) => {
-    const idx = ALL_IMAGES.findIndex(i => i.id === lightbox.id);
-    setLightbox(ALL_IMAGES[(idx + dir + ALL_IMAGES.length) % ALL_IMAGES.length]);
-  };
+  const filtered = activeCategory === 'All' ? GALLERY_IMAGES : GALLERY_IMAGES.filter(img => img.category === activeCategory);
+
+  const openLightbox = (index) => setLightbox(index);
+  const closeLightbox = () => setLightbox(null);
+  const prevImage = () => setLightbox(i => (i - 1 + filtered.length) % filtered.length);
+  const nextImage = () => setLightbox(i => (i + 1) % filtered.length);
 
   return (
-    <section id="gallery" style={{ background: '#0A0A0A' }} className="py-24 lg:py-32 overflow-hidden">
-      <style>{STYLE}</style>
-
+    <section id="gallery" className="py-24" style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={headerRef} className="fade-up text-center mb-16">
-          <SectionLabel className="justify-center mb-4">OUR WORK</SectionLabel>
-          <h2 className="font-cormorant font-semibold leading-tight mb-3" style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: '#ffffff' }}>
-            A Glimpse of <span className="gold-shimmer">the Magic</span>
+        <div ref={headerRef} className="fade-up text-center mb-12">
+          <div className="section-label justify-center mb-4">OUR PORTFOLIO</div>
+          <h2 className="font-cormorant font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+            A Glimpse of the Magic We Create
           </h2>
-          <p className="font-montserrat text-sm" style={{ color: '#888888' }}>
-            Hover to pause · Click to view
-          </p>
+          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>Every event tells a beautiful story</p>
         </div>
-      </div>
 
-      {/* Row 1 — scrolls LEFT */}
-      <div className="relative mb-5" style={{ maskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)' }}>
-        <div className="flex scroll-left" style={{ width: 'max-content' }}>
-          {[...ROW1, ...ROW1].map((item, i) => (
-            <GalleryImage key={`r1-${i}`} item={item} onClick={setLightbox} />
+        {/* Filter pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {GALLERY_CATEGORIES.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200"
+              style={{
+                fontFamily: 'Poppins',
+                background: activeCategory === cat ? '#CC2299' : 'transparent',
+                color: activeCategory === cat ? '#fff' : '#1A1A8C',
+                border: `1.5px solid ${activeCategory === cat ? '#CC2299' : '#1A1A8C'}`,
+              }}
+              onMouseEnter={e => { if (activeCategory !== cat) { e.currentTarget.style.borderColor = '#CC2299'; e.currentTarget.style.color = '#CC2299'; } }}
+              onMouseLeave={e => { if (activeCategory !== cat) { e.currentTarget.style.borderColor = '#1A1A8C'; e.currentTarget.style.color = '#1A1A8C'; } }}
+            >
+              {cat}
+            </button>
           ))}
         </div>
-      </div>
 
-      {/* Row 2 — scrolls RIGHT */}
-      <div className="relative" style={{ maskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, black 8%, black 92%, transparent)' }}>
-        <div className="flex scroll-right" style={{ width: 'max-content' }}>
-          {[...ROW2, ...ROW2].map((item, i) => (
-            <GalleryImage key={`r2-${i}`} item={item} onClick={setLightbox} />
+        {/* Grid */}
+        <div className="columns-2 md:columns-3 gap-3 space-y-3">
+          {filtered.map((img, i) => (
+            <div key={img.src + i} className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-lg"
+              onClick={() => openLightbox(i)}>
+              <img src={img.src} alt={img.title} className="w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100 rounded-lg"
+                style={{ background: 'rgba(204,34,153,0.75)' }}>
+                <ZoomIn size={28} color="#fff" />
+                <p className="text-white text-sm font-medium mt-2" style={{ fontFamily: 'Poppins' }}>{img.title}</p>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-
-      {/* CTA */}
-      <div className="text-center mt-12">
-        <p className="font-montserrat text-sm" style={{ color: '#888888' }}>
-          Want to see your event here?{' '}
-          <a href="#inquiry" style={{ color: '#D4AF37', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
-            Book with us →
-          </a>
-        </p>
       </div>
 
       {/* Lightbox */}
-      {lightbox && (
-        <div className="lightbox-overlay" onClick={() => setLightbox(null)}>
-          <button
-            className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300"
-            style={{ border: '1px solid rgba(212,175,55,0.5)', color: '#ffffff' }}
-            onClick={() => setLightbox(null)}
-          >
-            <X size={18} />
-          </button>
-          <button
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300"
-            style={{ border: '1px solid rgba(212,175,55,0.5)', color: '#ffffff' }}
-            onClick={e => { e.stopPropagation(); lightboxNav(-1); }}
-          >
-            <ChevronLeft size={20} />
-          </button>
-
-          <div
-            className="max-w-4xl mx-4 rounded-xl overflow-hidden"
-            style={{ border: '2px solid rgba(212,175,55,0.4)', maxHeight: '85vh' }}
-            onClick={e => e.stopPropagation()}
-          >
-            <img
-              src={lightbox.image}
-              alt={lightbox.title}
-              className="w-full object-contain"
-              style={{ maxHeight: '75vh' }}
-            />
-            <div className="flex items-center justify-between px-6 py-3" style={{ background: '#1A1A1A' }}>
-              <p className="font-cormorant text-lg text-white">{lightbox.title}</p>
-              <span
-                className="font-montserrat uppercase px-3 py-1 rounded-full"
-                style={{ fontSize: '10px', letterSpacing: '0.15em', color: '#0A0A0A', background: '#D4AF37' }}
-              >
-                {lightbox.category}
-              </span>
-            </div>
+      {lightbox !== null && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <div className="relative max-w-4xl w-full mx-4" onClick={e => e.stopPropagation()}>
+            <button onClick={closeLightbox}
+              className="absolute -top-12 right-0 w-10 h-10 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+              style={{ background: '#CC2299' }}>
+              <X size={18} />
+            </button>
+            <img src={filtered[lightbox].src} alt={filtered[lightbox].title} className="w-full rounded-lg object-contain max-h-[80vh]" />
+            <p className="text-center text-white/80 mt-3 text-sm" style={{ fontFamily: 'Poppins' }}>{filtered[lightbox].title}</p>
+            <button onClick={prevImage}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+              style={{ background: 'rgba(26,26,140,0.8)' }}
+              onMouseEnter={e => e.currentTarget.style.background = '#1A1A8C'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(26,26,140,0.8)'}
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button onClick={nextImage}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-white transition-colors duration-200"
+              style={{ background: 'rgba(26,26,140,0.8)' }}
+              onMouseEnter={e => e.currentTarget.style.background = '#1A1A8C'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(26,26,140,0.8)'}
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
-
-          <button
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all duration-300"
-            style={{ border: '1px solid rgba(212,175,55,0.5)', color: '#ffffff' }}
-            onClick={e => { e.stopPropagation(); lightboxNav(1); }}
-          >
-            <ChevronRight size={20} />
-          </button>
         </div>
       )}
     </section>

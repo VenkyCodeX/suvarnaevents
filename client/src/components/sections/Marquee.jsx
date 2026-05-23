@@ -1,26 +1,19 @@
 import React from 'react';
 
-const ITEMS = [
-  '✨ Weddings', '💍 Engagements', '🎂 Birthdays',
-  '🏢 Corporate Events', '🎊 Receptions', '🌸 Haldi',
-  '💃 Sangeet', '👶 Baby Showers', '🎉 Anniversaries',
-];
+const ITEMS = ['Weddings', 'Engagements', 'Receptions', 'Birthdays', 'Corporate Events', 'Sangeet', 'Haldi', 'Anniversaries', 'Baby Showers', 'Naming Ceremonies'];
 
-const MarqueeStrip = () => {
-  const doubled = [...ITEMS, ...ITEMS];
-
-  return (
-    <div className="bg-gold py-4 overflow-hidden relative">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {doubled.map((item, i) => (
-          <span key={i} className="font-montserrat font-semibold text-black text-sm uppercase tracking-wider mx-6 flex-shrink-0">
-            {item}
-            <span className="mx-6 text-black/40">·</span>
-          </span>
-        ))}
-      </div>
+const MarqueeStrip = () => (
+  <div className="overflow-hidden py-4" style={{ background: '#CC2299' }}>
+    <div className="flex animate-marquee whitespace-nowrap">
+      {[...ITEMS, ...ITEMS].map((item, i) => (
+        <span key={i} className="inline-flex items-center gap-4 mx-4 text-white font-semibold uppercase tracking-widest"
+          style={{ fontSize: '13px', fontFamily: 'Poppins' }}>
+          <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px' }}>✿</span>
+          {item}
+        </span>
+      ))}
     </div>
-  );
-};
+  </div>
+);
 
 export default MarqueeStrip;

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import SectionLabel from '../ui/SectionLabel';
-import TestimonialCard from '../ui/TestimonialCard';
 import { TESTIMONIALS, SITE } from '../../utils/constants';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 
@@ -10,58 +8,86 @@ const Testimonials = () => {
   const headerRef = useScrollAnimation();
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrent(prev => (prev + 1) % TESTIMONIALS.length);
-    }, 4500);
+    intervalRef.current = setInterval(() => setCurrent(p => (p + 1) % TESTIMONIALS.length), 5000);
     return () => clearInterval(intervalRef.current);
   }, []);
 
   return (
-    <section id="testimonials" style={{ background: '#0A0A0A' }} className="py-24 lg:py-32 relative overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.04) 0%, transparent 70%)' }}
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div ref={headerRef} className="fade-up text-center mb-16">
-          <SectionLabel className="justify-center mb-4">TESTIMONIALS</SectionLabel>
-          <h2 className="font-cormorant font-semibold leading-tight mb-3" style={{ fontSize: 'clamp(36px, 5vw, 60px)', color: '#ffffff' }}>
-            What Our <span className="gold-shimmer">Clients Say</span>
+    <section id="testimonials" className="py-24" style={{ background: '#FFFFFF' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={headerRef} className="fade-up text-center mb-14">
+          <div className="section-label justify-center mb-4">TESTIMONIALS</div>
+          <h2 className="font-cormorant font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+            What Our Clients Say
           </h2>
-          <p className="font-montserrat text-sm" style={{ color: '#888888' }}>
-            Based on {SITE.reviews} Google Reviews · {SITE.rating}⭐
-          </p>
+          <div className="flex items-center justify-center gap-1 mb-1">
+            {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#CC2299', fontSize: '20px' }}>★</span>)}
+          </div>
+          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>{SITE.rating} · {SITE.reviews} Google Reviews</p>
         </div>
 
         {/* Carousel */}
         <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${current * 100}%)` }}
-          >
+          <div className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${current * 100}%)` }}>
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="w-full flex-shrink-0 px-4 md:px-16 lg:px-32">
-                <TestimonialCard {...t} />
+              <div key={i} className="w-full flex-shrink-0 px-4 md:px-20 lg:px-32">
+                <div className="rounded-xl p-8 md:p-10 relative"
+                  style={{ background: '#FFFFFF', borderLeft: '4px solid #CC2299', boxShadow: '0 4px 30px rgba(26,26,140,0.08)', border: '1px solid #F0F0F0', borderLeftColor: '#CC2299', borderLeftWidth: '4px' }}>
+                  {/* Decorative quote */}
+                  <div className="absolute top-4 left-6 font-cormorant select-none leading-none"
+                    style={{ fontSize: '80px', color: 'rgba(204,34,153,0.12)', fontFamily: 'Cormorant Garamond' }}>"</div>
+
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-5">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <span key={j} style={{ color: '#CC2299', fontSize: '18px' }}>★</span>
+                    ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="font-cormorant italic text-xl leading-relaxed mb-8 relative z-10"
+                    style={{ color: '#444444', fontFamily: 'Cormorant Garamond' }}>
+                    "{t.text}"
+                  </p>
+
+                  {/* Client */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-full flex items-center justify-center"
+                      style={{ background: '#E8E8F8' }}>
+                      <span className="font-semibold text-lg" style={{ color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>{t.name.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>{t.name}</p>
+                      <p className="text-xs" style={{ color: '#888888', fontFamily: 'Poppins' }}>{t.event}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-2 mt-8">
           {TESTIMONIALS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
+            <button key={i} onClick={() => setCurrent(i)}
               className="rounded-full transition-all duration-300"
-              style={{
-                width: i === current ? '32px' : '8px',
-                height: '8px',
-                background: i === current ? '#D4AF37' : 'rgba(255,255,255,0.2)',
-              }}
+              style={{ width: i === current ? '28px' : '8px', height: '8px', background: i === current ? '#CC2299' : '#E8E8F8' }}
             />
           ))}
+        </div>
+
+        {/* Google link */}
+        <div className="text-center mt-8">
+          <a href="https://g.co/kgs/suvarnaevents" target="_blank" rel="noopener noreferrer"
+            className="text-sm font-medium transition-colors duration-200"
+            style={{ color: '#CC2299', fontFamily: 'Poppins' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#A01A7A'}
+            onMouseLeave={e => e.currentTarget.style.color = '#CC2299'}
+          >
+            Read All Reviews on Google →
+          </a>
         </div>
       </div>
     </section>

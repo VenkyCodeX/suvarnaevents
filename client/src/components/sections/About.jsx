@@ -1,7 +1,5 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
-import SectionLabel from '../ui/SectionLabel';
-import { ABOUT_CHECKLIST, STATS } from '../../utils/constants';
+import { ABOUT_CHECKLIST, SITE } from '../../utils/constants';
 import useScrollAnimation from '../../hooks/useScrollAnimation';
 
 const About = () => {
@@ -9,76 +7,58 @@ const About = () => {
   const rightRef = useScrollAnimation();
 
   return (
-    <section id="about" style={{ background: '#F5F5F0' }} className="py-24 lg:py-32">
+    <section id="about" className="py-24" style={{ background: '#F8E6F4' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Left: Image */}
+          {/* Left — Image */}
           <div ref={leftRef} className="fade-up relative">
-            <div className="absolute -top-4 -left-4 w-full h-full rounded-2xl" style={{ border: '2px solid rgba(212,175,55,0.3)' }} />
-            <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl" style={{ border: '1px solid rgba(212,175,55,0.15)' }} />
-            <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: '4/5' }}>
+            <div className="relative rounded-xl overflow-hidden" style={{ border: '3px solid #1A1A8C' }}>
               <img
-                src="/assets/Screenshot 2026-05-23 165002.png"
-                alt="Suvarna Event Management"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onLoad={e => e.target.classList.add('loaded')}
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                alt="Suvarna Events Team"
+                className="w-full object-cover"
+                style={{ height: '480px' }}
               />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)' }} />
-              {/* Rating badge */}
-              <div
-                className="absolute bottom-6 left-6 rounded-xl px-5 py-3"
-                style={{ background: 'rgba(0,0,0,0.85)', border: '1px solid rgba(212,175,55,0.4)', backdropFilter: 'blur(8px)' }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="font-cormorant font-bold text-2xl" style={{ color: '#D4AF37' }}>4.8</span>
-                  <div>
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#D4AF37', fontSize: '12px' }}>★</span>)}
-                    </div>
-                    <p className="font-montserrat" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>68 Google Reviews</p>
-                  </div>
-                </div>
-              </div>
+            </div>
+            {/* Est badge */}
+            <div className="absolute -bottom-5 -right-5 w-24 h-24 rounded-full flex flex-col items-center justify-center"
+              style={{ background: '#CC2299', border: '3px solid #fff', boxShadow: '0 4px 20px rgba(204,34,153,0.4)' }}>
+              <span className="text-white font-semibold text-xs" style={{ fontFamily: 'Poppins' }}>Est.</span>
+              <span className="text-white font-bold text-lg" style={{ fontFamily: 'Cormorant Garamond' }}>2020</span>
             </div>
           </div>
 
-          {/* Right: Content */}
+          {/* Right — Content */}
           <div ref={rightRef} className="fade-up">
-            <SectionLabel className="mb-4">OUR STORY</SectionLabel>
-            <h2 className="font-cormorant font-semibold leading-tight mb-6" style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: '#0A0A0A' }}>
-              Crafting Memories<br />
-              <span className="font-playfair italic" style={{ color: '#D4AF37' }}>Since Day One.</span>
+            <div className="section-label mb-4">OUR STORY</div>
+            <h2 className="font-cormorant font-semibold mb-6 leading-tight"
+              style={{ fontSize: 'clamp(30px, 4vw, 44px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+              Crafting Unforgettable<br />Moments Since Day One.
             </h2>
-            <p className="font-montserrat text-sm leading-relaxed mb-8" style={{ color: '#4b5563' }}>
-              Suvarna Event Management was born from a simple belief — that every celebration deserves to be extraordinary.
-              Based in the heart of Hyderabad, near the sacred Chilkur Balaji Temple, we bring passion, creativity and
-              meticulous attention to detail to every event we touch. From grand Telugu weddings to intimate birthday
-              gatherings, we treat every occasion as our own.
+            <p className="text-sm leading-relaxed mb-8" style={{ color: '#444444', fontFamily: 'Poppins' }}>
+              Suvarna Event Management was born from a deep passion for celebrating life's precious moments.
+              Based near the sacred Chilkur Balaji Temple in Moinabad, Hyderabad, we bring creativity,
+              precision and warmth to every event. From grand Telugu weddings to intimate birthday gatherings —
+              we treat every celebration as if it were our own.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-4 gap-4 mb-8 py-6" style={{ borderTop: '1px solid rgba(212,175,55,0.2)', borderBottom: '1px solid rgba(212,175,55,0.2)' }}>
-              {STATS.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-cormorant font-bold" style={{ fontSize: 'clamp(20px, 3vw, 28px)', color: '#D4AF37' }}>{stat.value}</p>
-                  <p className="font-montserrat uppercase tracking-wider mt-1" style={{ fontSize: '10px', color: '#6b7280' }}>{stat.label}</p>
+            {/* Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+              {ABOUT_CHECKLIST.map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <span className="text-lg" style={{ color: '#CC2299' }}>✓</span>
+                  <span className="text-sm font-medium" style={{ color: '#1A1A1A', fontFamily: 'Poppins' }}>{item}</span>
                 </div>
               ))}
             </div>
 
-            {/* Checklist */}
-            <ul className="space-y-3 mb-8">
-              {ABOUT_CHECKLIST.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <CheckCircle2 size={16} style={{ color: '#D4AF37', flexShrink: 0 }} />
-                  <span className="font-montserrat text-sm" style={{ color: '#374151' }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a href="#inquiry" className="btn-gold">Get In Touch →</a>
+            <button
+              onClick={() => { const el = document.querySelector('#contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
+              className="btn-navy"
+            >
+              Get In Touch →
+            </button>
           </div>
         </div>
       </div>

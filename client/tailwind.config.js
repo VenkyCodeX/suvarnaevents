@@ -4,45 +4,48 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: {
-          DEFAULT: '#D4AF37',
-          bright: '#FFD700',
-          light: '#F5E6A3',
-          rose: '#B76E79',
+        navy: {
+          DEFAULT: '#1A1A8C',
+          deep: '#12127A',
+          light: '#E8E8F8',
         },
-        richblack: '#0A0A0A',
-        darkcard: '#1A1A1A',
-        darksurface: '#111111',
-        offwhite: '#F5F5F0',
-        warmgrey: '#888888',
+        magenta: {
+          DEFAULT: '#CC2299',
+          deep: '#A01A7A',
+          light: '#F8E6F4',
+        },
+        brand: {
+          white: '#FFFFFF',
+          'warm-white': '#FAFAFA',
+          black: '#1A1A1A',
+          grey: '#444444',
+          'mid-grey': '#888888',
+          'light-grey': '#F0F0F0',
+        },
       },
       fontFamily: {
         cormorant: ['"Cormorant Garamond"', 'serif'],
         playfair: ['"Playfair Display"', 'serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       animation: {
-        'shimmer': 'shimmer 2.5s linear infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-gold': 'pulseGold 2s ease-in-out infinite',
-        'marquee': 'marquee 30s linear infinite',
+        marquee: 'marquee 30s linear infinite',
+        'whatsapp-pulse': 'whatsappPulse 2s ease-in-out infinite',
+        'fade-up': 'fadeUp 0.6s ease forwards',
+        'count-up': 'countUp 0.3s ease forwards',
       },
       keyframes: {
-        shimmer: {
-          '0%': { backgroundPosition: '-200% center' },
-          '100%': { backgroundPosition: '200% center' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        pulseGold: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(212,175,55,0.4)' },
-          '50%': { boxShadow: '0 0 0 20px rgba(212,175,55,0)' },
-        },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        whatsappPulse: {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(37,211,102,0.5)' },
+          '70%': { boxShadow: '0 0 0 16px rgba(37,211,102,0)' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

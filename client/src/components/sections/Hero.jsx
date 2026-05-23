@@ -1,59 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import Button from '../ui/Button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SITE } from '../../utils/constants';
 
 const SLIDES = [
-  {
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80',
-    alt: 'Grand Wedding Ceremony',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80',
-    alt: 'Elegant Reception',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=80',
-    alt: 'Birthday Celebration',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80',
-    alt: 'Corporate Event',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=1920&q=80',
-    alt: 'Traditional Ceremony',
-  },
+  { image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80', alt: 'Grand Wedding Ceremony' },
+  { image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80', alt: 'Elegant Reception' },
+  { image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=80', alt: 'Birthday Celebration' },
+  { image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80', alt: 'Corporate Event' },
+  { image: 'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=1920&q=80', alt: 'Traditional Ceremony' },
 ];
-
-const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  left: `${Math.random() * 100}%`,
-  size: `${Math.random() * 6 + 4}px`,
-  duration: `${Math.random() * 8 + 6}s`,
-  delay: `${Math.random() * 5}s`,
-  opacity: Math.random() * 0.6 + 0.2,
-}));
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
   const intervalRef = useRef(null);
 
   const goTo = (index) => {
-    if (transitioning) return;
-    setTransitioning(true);
-    setTimeout(() => {
-      setCurrent(index);
-      setTransitioning(false);
-    }, 600);
+    setCurrent(index);
+    setAnimKey(k => k + 1);
   };
-
   const next = () => goTo((current + 1) % SLIDES.length);
   const prev = () => goTo((current - 1 + SLIDES.length) % SLIDES.length);
 
   useEffect(() => {
-    intervalRef.current = setInterval(next, 5000);
+    intervalRef.current = setInterval(next, 6000);
     return () => clearInterval(intervalRef.current);
   }, [current]);
 
@@ -66,121 +36,90 @@ const Hero = () => {
     <section id="home" className="relative w-full h-screen min-h-[600px] overflow-hidden">
       {/* Slides */}
       {SLIDES.map((slide, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            i === current ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.alt}
-            className={`w-full h-full object-cover ${i === current ? 'ken-burns' : ''}`}
-          />
+        <div key={i} className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: i === current ? 1 : 0 }}>
+          <img src={slide.image} alt={slide.alt} className="w-full h-full object-cover" />
         </div>
       ))}
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
-
-      {/* Gold particles */}
-      {PARTICLES.map((p) => (
-        <div
-          key={p.id}
-          className="particle"
-          style={{
-            left: p.left,
-            width: p.size,
-            height: p.size,
-            background: '#D4AF37',
-            borderRadius: '50%',
-            animationDuration: p.duration,
-            animationDelay: p.delay,
-            opacity: p.opacity,
-            bottom: '-20px',
-          }}
-        />
-      ))}
+      {/* Navy gradient overlay — bottom heavy */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(26,26,140,0.2) 0%, rgba(26,26,140,0.4) 40%, rgba(26,26,140,0.75) 100%)' }} />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6">
-        {/* Label tag */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-px bg-gold" />
-          <span className="font-montserrat text-xs font-semibold text-gold uppercase tracking-[0.3em]">
-            Hyderabad's Premier Event Planners
-          </span>
-          <div className="w-12 h-px bg-gold" />
+      <div key={animKey} className="relative z-10 h-full flex flex-col items-center justify-end text-center px-4 sm:px-6 pb-24 md:pb-32">
+
+        {/* Magenta pill label */}
+        <div className="mb-5 px-4 py-1.5 rounded-full text-white text-xs font-semibold uppercase tracking-widest"
+          style={{ background: '#CC2299', fontFamily: 'Poppins', animation: 'fadeUp 0.5s ease forwards', opacity: 0 }}>
+          Hyderabad's Premier Event Planners
         </div>
 
-        {/* Main heading */}
-        <h1 className="font-cormorant text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white leading-[1.1] mb-6">
+        {/* Heading */}
+        <h1 className="font-cormorant text-white font-light leading-tight mb-4"
+          style={{ fontSize: 'clamp(40px, 7vw, 72px)', fontFamily: 'Cormorant Garamond', animation: 'fadeUp 0.6s 0.1s ease forwards', opacity: 0 }}>
           Creating Moments<br />
-          <span className="gold-shimmer font-semibold">That Last</span><br />
-          Forever.
+          <span style={{ fontWeight: 600, fontStyle: 'italic' }}>That Last Forever.</span>
         </h1>
 
-        {/* Gold italic subtext */}
-        <p className="font-playfair italic text-gold text-lg md:text-xl mb-4">
+        {/* Italic subtext */}
+        <p className="font-playfair italic text-white/90 mb-3"
+          style={{ fontSize: 'clamp(15px, 2vw, 20px)', fontFamily: 'Playfair Display', animation: 'fadeUp 0.6s 0.2s ease forwards', opacity: 0 }}>
           Weddings · Receptions · Birthdays · Corporate Events
         </p>
 
-        {/* Description */}
-        <p className="font-montserrat text-sm md:text-base text-white/70 max-w-xl leading-relaxed mb-8">
-          From intimate celebrations to grand weddings — we craft unforgettable experiences
-          with passion, precision and elegance.
+        {/* Body text */}
+        <p className="text-white/75 max-w-lg leading-relaxed mb-6"
+          style={{ fontSize: '14px', fontFamily: 'Poppins', animation: 'fadeUp 0.6s 0.3s ease forwards', opacity: 0 }}>
+          Crafted with passion. Delivered with perfection.<br />
+          Based in Hyderabad — serving across Telangana.
         </p>
 
-        {/* Rating badge */}
-        <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-gold/30 rounded-full px-5 py-2 mb-10">
-          <Star size={14} className="text-gold fill-gold" />
-          <span className="font-montserrat text-sm text-gold font-semibold">{SITE.rating}</span>
-          <span className="font-montserrat text-xs text-white/60">· {SITE.reviews} Google Reviews</span>
+        {/* Rating pill */}
+        <div className="flex items-center gap-2 rounded-full px-5 py-2 mb-8"
+          style={{ background: 'rgba(255,255,255,0.95)', animation: 'fadeUp 0.6s 0.4s ease forwards', opacity: 0 }}>
+          {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#CC2299', fontSize: '14px' }}>★</span>)}
+          <span className="font-semibold text-sm" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>{SITE.rating}</span>
+          <span className="text-xs" style={{ color: '#888', fontFamily: 'Poppins' }}>· {SITE.reviews} Google Reviews</span>
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button variant="gold" onClick={() => handleNavClick('#inquiry')}>
+        <div className="flex flex-col sm:flex-row gap-4"
+          style={{ animation: 'fadeUp 0.6s 0.5s ease forwards', opacity: 0 }}>
+          <button onClick={() => handleNavClick('#inquiry')} className="btn-navy" style={{ fontSize: '14px' }}>
             Plan Your Event →
-          </Button>
-          <Button variant="outline" onClick={() => handleNavClick('#gallery')}>
+          </button>
+          <button onClick={() => handleNavClick('#gallery')} className="btn-navy-outline" style={{ fontSize: '14px' }}>
             View Our Work →
-          </Button>
+          </button>
         </div>
       </div>
 
-      {/* Slide controls */}
-      <button
-        onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300 backdrop-blur-sm"
+      {/* Arrows */}
+      <button onClick={prev}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300"
+        style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.3)' }}
+        onMouseEnter={e => e.currentTarget.style.background = '#CC2299'}
+        onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
       >
         <ChevronLeft size={20} />
       </button>
-      <button
-        onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300 backdrop-blur-sm"
+      <button onClick={next}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-300"
+        style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.3)' }}
+        onMouseEnter={e => e.currentTarget.style.background = '#CC2299'}
+        onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
       >
         <ChevronRight size={20} />
       </button>
 
-      {/* Slide dots */}
+      {/* Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className={`transition-all duration-300 rounded-full ${
-              i === current ? 'w-8 h-2 bg-gold' : 'w-2 h-2 bg-white/40 hover:bg-white/70'
-            }`}
+          <button key={i} onClick={() => goTo(i)}
+            className="rounded-full transition-all duration-300"
+            style={{ width: i === current ? '28px' : '8px', height: '8px', background: i === current ? '#CC2299' : 'rgba(255,255,255,0.5)' }}
           />
         ))}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 z-20 flex flex-col items-center gap-2 opacity-60">
-        <span className="font-montserrat text-[10px] text-white uppercase tracking-widest rotate-90 origin-center mb-4">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-white/60 to-transparent" />
       </div>
     </section>
   );
