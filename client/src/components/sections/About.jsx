@@ -15,7 +15,7 @@ const About = () => {
           <div ref={leftRef} className="fade-up relative">
             <div className="relative rounded-xl overflow-hidden" style={{ border: '3px solid #1A1A8C' }}>
               <img
-                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                src="/assets/Screenshot 2026-05-23 165259.png"
                 alt="Suvarna Events Team"
                 className="w-full object-cover"
                 style={{ height: '480px' }}

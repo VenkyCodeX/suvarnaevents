@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { NAV_LINKS, SITE } from '../../utils/constants';
 
 const Navbar = () => {
@@ -16,8 +17,23 @@ const Navbar = () => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
   }, [mobileOpen]);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleNavClick = (href) => {
     setMobileOpen(false);
+    if (href === '#gallery') {
+      navigate('/gallery');
+      return;
+    }
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -33,14 +49,14 @@ const Navbar = () => {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
 
             {/* Logo */}
             <button onClick={() => handleNavClick('#home')} className="flex items-center">
               <img
                 src="/assets/suvarnaLogo.jpg"
                 alt="Suvarna Event Management"
-                style={{ height: '55px', width: 'auto', borderRadius: '50%', objectFit: 'cover' }}
+                style={{ height: '75px', width: 'auto', borderRadius: '50%', objectFit: 'cover' }}
               />
             </button>
 
@@ -80,6 +96,15 @@ const Navbar = () => {
               >
                 Get a Quote
               </button>
+              {/* Mobile phone number — visible on small screens */}
+              <a
+                href={`tel:${SITE.phone.replace(/\s/g, '')}`}
+                className="flex lg:hidden items-center gap-1.5 font-semibold"
+                style={{ color: '#1A1A8C', fontFamily: 'Poppins', fontSize: '13px' }}
+              >
+                <Phone size={13} />
+                {SITE.phone}
+              </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="lg:hidden w-10 h-10 flex items-center justify-center transition-colors duration-200"

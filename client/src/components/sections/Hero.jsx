@@ -3,11 +3,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SITE } from '../../utils/constants';
 
 const SLIDES = [
-  { image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80', alt: 'Grand Wedding Ceremony' },
-  { image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80', alt: 'Elegant Reception' },
-  { image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=80', alt: 'Birthday Celebration' },
-  { image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80', alt: 'Corporate Event' },
-  { image: 'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=1920&q=80', alt: 'Traditional Ceremony' },
+  { image: '/assets/Screenshot 2026-05-23 165002.png', alt: 'Grand Wedding Ceremony' },
+  { image: '/assets/Screenshot 2026-05-23 165031.png', alt: 'Elegant Reception' },
+  { image: '/assets/Screenshot 2026-05-23 165054.png', alt: 'Birthday Celebration' },
+  { image: '/assets/Screenshot 2026-05-23 165135.png', alt: 'Traditional Ceremony' },
+  { image: '/assets/Screenshot 2026-05-23 165202.png', alt: 'Bridal Stage' },
 ];
 
 const Hero = () => {
@@ -46,7 +46,7 @@ const Hero = () => {
       <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(26,26,140,0.2) 0%, rgba(26,26,140,0.4) 40%, rgba(26,26,140,0.75) 100%)' }} />
 
       {/* Content */}
-      <div key={animKey} className="relative z-10 h-full flex flex-col items-center justify-end text-center px-4 sm:px-6 pb-24 md:pb-32">
+      <div key={animKey} className="relative z-10 h-full flex flex-col items-center justify-center md:justify-end text-center px-4 sm:px-6 pb-0 md:pb-32">
 
         {/* Magenta pill label */}
         <div className="mb-5 px-4 py-1.5 rounded-full text-white text-xs font-semibold uppercase tracking-widest"

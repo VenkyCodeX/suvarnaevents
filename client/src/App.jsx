@@ -8,6 +8,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import Home from './pages/Home';
+import GalleryPage from './pages/GalleryPage';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -24,9 +25,10 @@ const App = () => {
       <BrowserRouter>
         <TopBar />
         <Navbar />
-        <div style={{ paddingTop: '80px' }}>
+        <div style={{ paddingTop: '96px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
