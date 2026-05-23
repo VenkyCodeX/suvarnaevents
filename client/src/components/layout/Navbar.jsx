@@ -43,20 +43,20 @@ const Navbar = () => {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: '#FFFFFF',
+          background: '#F5E0F5',
           borderBottom: '2px solid #1A1A8C',
           boxShadow: scrolled ? '0 4px 20px rgba(26,26,140,0.12)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
+          <div className="flex items-center justify-between h-28">
 
             {/* Logo */}
             <button onClick={() => handleNavClick('#home')} className="flex items-center">
               <img
                 src="/assets/suvarnaLogo.jpg"
                 alt="Suvarna Event Management"
-                style={{ height: '75px', width: 'auto', borderRadius: '50%', objectFit: 'cover' }}
+                style={{ height: '130px', width: 'auto', borderRadius: '50%', objectFit: 'cover' }}
               />
             </button>
 
@@ -67,7 +67,7 @@ const Navbar = () => {
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
                   className="relative font-poppins text-sm font-medium group transition-colors duration-200"
-                  style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}
+                  style={{ color: '#1A1A8C', fontFamily: 'Cinzel', fontSize: '14px' }}
                   onMouseEnter={e => e.currentTarget.style.color = '#CC2299'}
                   onMouseLeave={e => e.currentTarget.style.color = '#1A1A8C'}
                 >
@@ -100,7 +100,7 @@ const Navbar = () => {
               <a
                 href={`tel:${SITE.phone.replace(/\s/g, '')}`}
                 className="flex lg:hidden items-center gap-1.5 font-semibold"
-                style={{ color: '#1A1A8C', fontFamily: 'Poppins', fontSize: '13px' }}
+                style={{ color: '#1A1A8C', fontFamily: 'Cinzel', fontSize: '13px' }}
               >
                 <Phone size={13} />
                 {SITE.phone}
@@ -121,7 +121,7 @@ const Navbar = () => {
       <div
         className="fixed inset-0 z-40 lg:hidden flex flex-col transition-all duration-400"
         style={{
-          background: '#FFFFFF',
+          background: '#F5E0F5',
           opacity: mobileOpen ? 1 : 0,
           pointerEvents: mobileOpen ? 'auto' : 'none',
           paddingTop: '80px',
