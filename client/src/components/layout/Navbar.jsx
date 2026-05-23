@@ -43,14 +43,16 @@ const Navbar = () => {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
 
             {/* Logo */}
-            <button onClick={() => handleNavClick('#home')} className="flex flex-col leading-tight text-left">
-              <span className="font-cormorant text-2xl font-semibold gold-shimmer">Suvarna</span>
-              <span className="font-montserrat text-white/70 uppercase" style={{ fontSize: '10px', letterSpacing: '0.2em' }}>
-                Event Management
-              </span>
+            <button onClick={() => handleNavClick('#home')} className="flex items-center">
+              <img
+                src="/assets/suvarnaLogo.jpg"
+                alt="Suvarna Event Management"
+                className="object-contain"
+                style={{ height: '90px', width: 'auto', maxWidth: '220px', borderRadius: '50%' }}
+              />
             </button>
 
             {/* Desktop Nav */}

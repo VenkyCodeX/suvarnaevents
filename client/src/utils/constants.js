@@ -77,6 +77,24 @@ export const WHY_US = [
 
 export const TESTIMONIALS = [
   {
+    text: 'Suvarana Events is the best. They handled all my sister\'s wedding events and decorations, and everything was amazing and very professional. Sunny, the owner, is a very kind and genuine person. He does not treat it like a normal event. He takes it personally and plans everything as if it is his own sister\'s wedding. Now he feels like part of our family. Sunny and his team are truly hardworking and dedicated. He delivered everything exactly as promised and even better than our expectations. We will definitely choose him again for our future family events. Highly recommended to anyone who wants a perfect and stress-free event.',
+    name: 'Surya Prakash',
+    event: 'Wedding · Google Review',
+    rating: 5,
+  },
+  {
+    text: 'The service was simply amazing.. The event manager was so cooperative and very creative managing the event. The staff was very friendly to the guests and the hosts.....',
+    name: 'Priyadarshini Duggireddy',
+    event: 'Google Review',
+    rating: 5,
+  },
+  {
+    text: 'Best event done by mr sunny (suvarna event management). He had done a great decoration for our half saree ceremony. He managed all our requirements very properly and helped us in managing all the things — you can directly leave your event into his hands and you can enjoy your event, he will manage all the things.',
+    name: 'A. Sathwik Chowdary',
+    event: 'Half Saree Ceremony · Google Review',
+    rating: 5,
+  },
+  {
     text: 'Suvarna Event Management made our wedding day absolutely magical. Every detail was perfect — from the mandap decoration to the lighting. Our guests are still talking about it!',
     name: 'Priya & Rahul',
     event: 'Wedding, March 2025',

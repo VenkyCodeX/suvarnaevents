@@ -16,10 +16,12 @@ const Footer = () => {
       <div className="py-8" style={{ borderBottom: '1px solid rgba(212,175,55,0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center md:items-start">
-            <span className="font-cormorant text-3xl font-semibold gold-shimmer">Suvarna</span>
-            <span className="font-montserrat" style={{ fontSize: '10px', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
-              Event Management
-            </span>
+            <img
+              src="/assets/suvarnaLogo.jpg"
+              alt="Suvarna Event Management"
+              className="object-contain"
+              style={{ height: '70px', width: 'auto' }}
+            />
           </div>
           <p className="font-cormorant italic text-xl text-center" style={{ color: 'rgba(212,175,55,0.6)' }}>
             "Creating moments that last forever."
