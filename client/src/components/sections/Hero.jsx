@@ -3,11 +3,36 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SITE } from '../../utils/constants';
 
 const SLIDES = [
-  { image: '/assets/Screenshot 2026-05-23 165002.png', alt: 'Grand Wedding Ceremony' },
-  { image: '/assets/Screenshot 2026-05-23 165031.png', alt: 'Elegant Reception' },
-  { image: '/assets/Screenshot 2026-05-23 165054.png', alt: 'Birthday Celebration' },
-  { image: '/assets/Screenshot 2026-05-23 165135.png', alt: 'Traditional Ceremony' },
-  { image: '/assets/Screenshot 2026-05-23 165202.png', alt: 'Bridal Stage' },
+  {
+    image: '/assets/HomePageBg1.jpg',
+    mobileImage: '/assets/HomePageBgMobile1.png',
+    alt: 'Suvarna Events - Wedding Ceremony',
+    label: 'Wedding Specialists · Hyderabad',
+    heading: 'Your Dream Wedding,
+Perfectly Crafted.',
+    subtext: 'Weddings · Engagements · Receptions · Sangeet',
+    body: 'From mandap to reception — every detail planned with love and precision.',
+  },
+  {
+    image: '/assets/HomePageBg2.png',
+    mobileImage: '/assets/HomePageBgMobile2.png',
+    alt: 'Suvarna Events - Reception',
+    label: 'Celebrations Done Right',
+    heading: 'Birthdays & Parties
+Full of Magic.',
+    subtext: 'Birthdays · Anniversaries · Baby Showers · Naming Ceremonies',
+    body: 'Themed décor, perfect ambiance — celebrations your guests will never forget.',
+  },
+  {
+    image: '/assets/HomePageBg3.png',
+    mobileImage: '/assets/HomePageBgMobile3.png',
+    alt: 'Suvarna Events - Celebration',
+    label: 'Traditional & Corporate Events',
+    heading: 'Every Occasion,
+Flawlessly Executed.',
+    subtext: 'Haldi · Corporate Events · Traditional Ceremonies',
+    body: 'Cultural sensitivity meets professional execution — trust us with every milestone.',
+  },
 ];
 
 const Hero = () => {
@@ -38,7 +63,10 @@ const Hero = () => {
       {SLIDES.map((slide, i) => (
         <div key={i} className="absolute inset-0 transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}>
-          <img src={slide.image} alt={slide.alt} className="w-full h-full object-cover" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={slide.mobileImage} />
+            <img src={slide.image} alt={slide.alt} className="w-full h-full object-cover" />
+          </picture>
         </div>
       ))}
 
@@ -50,45 +78,47 @@ const Hero = () => {
 
         {/* Magenta pill label */}
         <div className="mb-5 px-4 py-1.5 rounded-full text-white text-xs font-semibold uppercase tracking-widest"
-          style={{ background: '#CC2299', fontFamily: 'Poppins', animation: 'fadeUp 0.5s ease forwards', opacity: 0 }}>
-          Hyderabad's Premier Event Planners
+          style={{ background: '#CC2299', fontFamily: 'Cinzel', animation: 'fadeUp 0.5s ease forwards', opacity: 0 }}>
+          {SLIDES[current].label}
         </div>
 
         {/* Heading */}
-        <h1 className="font-cormorant text-white font-light leading-tight mb-4"
-          style={{ fontSize: 'clamp(40px, 7vw, 72px)', fontFamily: 'Cormorant Garamond', animation: 'fadeUp 0.6s 0.1s ease forwards', opacity: 0 }}>
-          Creating Moments<br />
-          <span style={{ fontWeight: 600, fontStyle: 'italic' }}>That Last Forever.</span>
+        <h1 className="text-white font-light leading-tight mb-4"
+          style={{ fontSize: 'clamp(36px, 6vw, 68px)', fontFamily: 'Cinzel Decorative', animation: 'fadeUp 0.6s 0.1s ease forwards', opacity: 0 }}>
+          {SLIDES[current].heading.split('\n').map((line, i) => (
+            <React.Fragment key={i}>
+              {i === 0 ? line : <><br /><span style={{ fontWeight: 700 }}>{line}</span></>}
+            </React.Fragment>
+          ))}
         </h1>
 
         {/* Italic subtext */}
-        <p className="font-playfair italic text-white/90 mb-3"
-          style={{ fontSize: 'clamp(15px, 2vw, 20px)', fontFamily: 'Playfair Display', animation: 'fadeUp 0.6s 0.2s ease forwards', opacity: 0 }}>
-          Weddings · Receptions · Birthdays · Corporate Events
+        <p className="italic text-white/90 mb-3"
+          style={{ fontSize: 'clamp(15px, 2vw, 20px)', fontFamily: 'DM Serif Display', animation: 'fadeUp 0.6s 0.2s ease forwards', opacity: 0 }}>
+          {SLIDES[current].subtext}
         </p>
 
         {/* Body text */}
         <p className="text-white/75 max-w-lg leading-relaxed mb-6"
-          style={{ fontSize: '14px', fontFamily: 'Poppins', animation: 'fadeUp 0.6s 0.3s ease forwards', opacity: 0 }}>
-          Crafted with passion. Delivered with perfection.<br />
-          Based in Hyderabad — serving across Telangana.
+          style={{ fontSize: '15px', fontFamily: 'Nunito', animation: 'fadeUp 0.6s 0.3s ease forwards', opacity: 0 }}>
+          {SLIDES[current].body}
         </p>
 
         {/* Rating pill */}
         <div className="flex items-center gap-2 rounded-full px-5 py-2 mb-8"
           style={{ background: 'rgba(255,255,255,0.95)', animation: 'fadeUp 0.6s 0.4s ease forwards', opacity: 0 }}>
           {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#CC2299', fontSize: '14px' }}>★</span>)}
-          <span className="font-semibold text-sm" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>{SITE.rating}</span>
-          <span className="text-xs" style={{ color: '#888', fontFamily: 'Poppins' }}>· {SITE.reviews} Google Reviews</span>
+          <span className="font-semibold text-sm" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>{SITE.rating}</span>
+          <span className="text-xs" style={{ color: '#888', fontFamily: 'Nunito' }}>· {SITE.reviews} Google Reviews</span>
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4"
           style={{ animation: 'fadeUp 0.6s 0.5s ease forwards', opacity: 0 }}>
-          <button onClick={() => handleNavClick('#inquiry')} className="btn-navy" style={{ fontSize: '14px' }}>
+          <button onClick={() => handleNavClick('#inquiry')} className="btn-navy" style={{ fontSize: '14px', fontFamily: 'Cinzel' }}>
             Plan Your Event →
           </button>
-          <button onClick={() => handleNavClick('#gallery')} className="btn-navy-outline" style={{ fontSize: '14px' }}>
+          <button onClick={() => handleNavClick('#gallery')} className="btn-navy-outline" style={{ fontSize: '14px', fontFamily: 'Cinzel' }}>
             View Our Work →
           </button>
         </div>
