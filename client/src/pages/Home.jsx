@@ -5,6 +5,7 @@ import Services from '../components/sections/Services';
 import Stats from '../components/sections/Stats';
 import Gallery from '../components/sections/Gallery';
 import About from '../components/sections/About';
+import VideoShowcase from '../components/sections/VideoShowcase';
 import Testimonials from '../components/sections/Testimonials';
 import Pricing from '../components/sections/Pricing';
 import Inquiry from '../components/sections/Inquiry';
@@ -17,6 +18,7 @@ const Home = () => (
     <Services />
     <Stats />
     <Gallery />
+    <VideoShowcase />
     <About />
     <Testimonials />
     <Pricing />

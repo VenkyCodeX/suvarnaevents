@@ -1,69 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { GALLERY_IMAGES, GALLERY_CATEGORIES } from '../utils/constants';
-
-const VideoSection = () => {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
-
-  // Auto-play when in view, pause when out
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!videoRef.current) return;
-        if (entry.isIntersecting) {
-          videoRef.current.play();
-          setPlaying(true);
-        } else {
-          videoRef.current.pause();
-          setPlaying(false);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  const toggle = () => {
-    if (!videoRef.current) return;
-    if (playing) { videoRef.current.pause(); setPlaying(false); }
-    else { videoRef.current.play(); setPlaying(true); }
-  };
-
-  // Detect mobile
-  const isMobile = window.innerWidth <= 768;
-  const videoSrc = isMobile ? '/assets/HomePageBgMobile.mp4' : '/assets/HomePageBgDesktop.mp4';
-
-  return (
-    <div ref={containerRef} className="relative w-full overflow-hidden" style={{ background: '#0A0A0A' }}>
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        loop
-        muted
-        playsInline
-        className="w-full object-cover"
-        style={{ maxHeight: '600px' }}
-      />
-
-      {/* Overlay */}
-      <div className="absolute inset-0" style={{ background: 'rgba(26,26,140,0.25)' }} />
-
-      {/* Play / Pause button */}
-      <button
-        onClick={toggle}
-        className="absolute bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200"
-        style={{ background: playing ? '#CC2299' : '#1A1A8C', boxShadow: '0 4px 20px rgba(0,0,0,0.4)' }}
-        aria-label={playing ? 'Pause video' : 'Play video'}
-      >
-        {playing ? <Pause size={20} color="#fff" /> : <Play size={20} color="#fff" />}
-      </button>
-    </div>
-  );
-};
 
 const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -190,9 +127,6 @@ const GalleryPage = () => {
           </div>
         )}
       </div>
-
-      {/* Video Section */}
-      <VideoSection />
 
       {/* Lightbox */}
       {lightbox !== null && (
