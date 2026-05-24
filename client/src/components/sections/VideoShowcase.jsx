@@ -73,11 +73,11 @@ const VideoShowcase = () => {
   };
 
   return (
-    <section className="py-20 overflow-hidden" style={{ background: '#0A0A0A' }}>
+    <section className="py-20 overflow-hidden" style={{ background: '#ffffff' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex items-end justify-between">
         <div>
           <div className="section-label mb-3" style={{ color: '#CC2299' }}>OUR VIDEOS</div>
-          <h2 className="font-semibold" style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', color: '#fff', fontFamily: 'Cinzel Decorative' }}>
+          <h2 className="font-semibold" style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
             See the Magic Unfold
           </h2>
         </div>
