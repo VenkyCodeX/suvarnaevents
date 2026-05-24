@@ -12,9 +12,9 @@ const ServiceCard = ({ icon, title, description, index }) => {
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 16px rgba(26,26,140,0.07)'; e.currentTarget.style.borderColor = '#F0F0F0'; e.currentTarget.style.borderTopColor = borderColor; }}
     >
       <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="font-playfair text-lg font-semibold mb-2" style={{ color: '#1A1A8C', fontFamily: 'Playfair Display' }}>{title}</h3>
-      <p className="text-sm leading-relaxed mb-4" style={{ color: '#444444', fontFamily: 'Poppins' }}>{description}</p>
-      <span className="text-sm font-semibold transition-colors duration-200" style={{ color: '#CC2299', fontFamily: 'Poppins' }}>
+      <h3 className="text-lg font-semibold mb-2" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>{title}</h3>
+      <p className="text-sm leading-relaxed mb-4" style={{ color: '#444444', fontFamily: 'Nunito' }}>{description}</p>
+      <span className="text-sm font-semibold transition-colors duration-200" style={{ color: '#CC2299', fontFamily: 'Nunito' }}>
         Learn More →
       </span>
     </div>
@@ -26,11 +26,11 @@ const Services = () => {
   const gridRef = useScrollAnimation();
 
   return (
-    <section id="services" className="py-24" style={{ background: '#FAFAFA' }}>
+    <section id="services" className="py-24" style={{ background: '#F8E6F4' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="fade-up text-center mb-16">
           <div className="section-label justify-center mb-4">WHAT WE OFFER</div>
-          <h2 className="font-cormorant font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+          <h2 className="font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
             Every Occasion,<br />Perfectly Planned.
           </h2>
           <p className="text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>Complete event management for every milestone</p>

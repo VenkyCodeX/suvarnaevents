@@ -22,8 +22,8 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-4">
               <img src="/assets/suvarnaLogo.jpg" alt="Suvarna" style={{ height: '60px', width: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #CC2299' }} />
               <div>
-                <p className="font-cormorant text-xl font-semibold text-white" style={{ fontFamily: 'Cormorant Garamond' }}>Suvarna</p>
-                <p className="text-white/60 uppercase" style={{ fontSize: '10px', letterSpacing: '0.2em', fontFamily: 'Poppins' }}>Event Management</p>
+                <p className="font-semibold text-xl text-white" style={{ fontFamily: 'Cinzel Decorative' }}>Suvarna</p>
+                <p className="text-white/60 uppercase" style={{ fontSize: '10px', letterSpacing: '0.2em', fontFamily: 'Cinzel' }}>Event Management</p>
               </div>
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-5" style={{ fontFamily: 'Poppins' }}>
@@ -55,7 +55,7 @@ const Footer = () => {
 
           {/* Col 2 — Quick Links */}
           <div>
-            <h4 className="font-cormorant text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cormorant Garamond' }}>Quick Links</h4>
+            <h4 className="text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cinzel Decorative' }}>Quick Links</h4>
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
@@ -76,7 +76,7 @@ const Footer = () => {
 
           {/* Col 3 — Services */}
           <div>
-            <h4 className="font-cormorant text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cormorant Garamond' }}>Our Services</h4>
+            <h4 className="text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cinzel Decorative' }}>Our Services</h4>
             <ul className="space-y-3">
               {SERVICES.map((s) => (
                 <li key={s.title}>
@@ -97,7 +97,7 @@ const Footer = () => {
 
           {/* Col 4 — Contact */}
           <div>
-            <h4 className="font-cormorant text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cormorant Garamond' }}>Contact Us</h4>
+            <h4 className="text-xl font-semibold mb-5 text-white" style={{ fontFamily: 'Cinzel Decorative' }}>Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={15} style={{ color: '#CC2299', marginTop: '2px', flexShrink: 0 }} />

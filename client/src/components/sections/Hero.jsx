@@ -4,7 +4,7 @@ import { SITE } from '../../utils/constants';
 
 const SLIDES = [
   {
-    image: '/assets/HomePageBg1.jpg',
+    image: '/assets/HomePageBgMobile1.png',
     mobileImage: '/assets/HomePageBgMobile1.png',
     alt: 'Suvarna Events - Wedding Ceremony',
     label: 'Wedding Specialists · Hyderabad',
@@ -14,7 +14,7 @@ Perfectly Crafted.`,
     body: 'From mandap to reception — every detail planned with love and precision.',
   },
   {
-    image: '/assets/HomePageBg2.png',
+    image: '/assets/HomePageBgMobile2.png',
     mobileImage: '/assets/HomePageBgMobile2.png',
     alt: 'Suvarna Events - Reception',
     label: 'Celebrations Done Right',
@@ -24,7 +24,7 @@ Full of Magic.`,
     body: 'Themed décor, perfect ambiance — celebrations your guests will never forget.',
   },
   {
-    image: '/assets/HomePageBg3.png',
+    image: '/assets/HomePageBgMobile3.png',
     mobileImage: '/assets/HomePageBgMobile3.png',
     alt: 'Suvarna Events - Celebration',
     label: 'Traditional & Corporate Events',

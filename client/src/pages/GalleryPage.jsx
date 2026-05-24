@@ -31,10 +31,10 @@ const GalleryPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
+    <div style={{ background: '#F8E6F4', minHeight: '100vh' }}>
 
       {/* Page Header */}
-      <div className="py-16 text-center" style={{ background: '#E8E8F8', borderBottom: '2px solid #1A1A8C' }}>
+      <div className="py-16 text-center" style={{ background: '#F8E6F4', borderBottom: '2px solid #1A1A8C' }}>
         <div
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-xs font-semibold uppercase tracking-widest mb-4"
           style={{ background: '#CC2299', fontFamily: 'Poppins' }}

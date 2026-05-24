@@ -24,19 +24,19 @@ const About = () => {
             {/* Est badge */}
             <div className="absolute -bottom-5 -right-5 w-24 h-24 rounded-full flex flex-col items-center justify-center"
               style={{ background: '#CC2299', border: '3px solid #fff', boxShadow: '0 4px 20px rgba(204,34,153,0.4)' }}>
-              <span className="text-white font-semibold text-xs" style={{ fontFamily: 'Poppins' }}>Est.</span>
-              <span className="text-white font-bold text-lg" style={{ fontFamily: 'Cormorant Garamond' }}>2020</span>
+              <span className="text-white font-semibold text-xs" style={{ fontFamily: 'Cinzel' }}>Est.</span>
+              <span className="text-white font-bold text-lg" style={{ fontFamily: 'Cinzel Decorative' }}>2020</span>
             </div>
           </div>
 
           {/* Right — Content */}
           <div ref={rightRef} className="fade-up">
             <div className="section-label mb-4">OUR STORY</div>
-            <h2 className="font-cormorant font-semibold mb-6 leading-tight"
-              style={{ fontSize: 'clamp(30px, 4vw, 44px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+            <h2 className="font-semibold mb-6 leading-tight"
+              style={{ fontSize: 'clamp(30px, 4vw, 44px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
               Crafting Unforgettable<br />Moments Since Day One.
             </h2>
-            <p className="text-sm leading-relaxed mb-8" style={{ color: '#444444', fontFamily: 'Poppins' }}>
+            <p className="text-sm leading-relaxed mb-8" style={{ color: '#444444', fontFamily: 'Nunito' }}>
               Suvarna Event Management was born from a deep passion for celebrating life's precious moments.
               Based near the sacred Chilkur Balaji Temple in Moinabad, Hyderabad, we bring creativity,
               precision and warmth to every event. From grand Telugu weddings to intimate birthday gatherings —
@@ -48,7 +48,7 @@ const About = () => {
               {ABOUT_CHECKLIST.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <span className="text-lg" style={{ color: '#CC2299' }}>✓</span>
-                  <span className="text-sm font-medium" style={{ color: '#1A1A1A', fontFamily: 'Poppins' }}>{item}</span>
+                  <span className="text-sm font-medium" style={{ color: '#1A1A1A', fontFamily: 'Nunito' }}>{item}</span>
                 </div>
               ))}
             </div>

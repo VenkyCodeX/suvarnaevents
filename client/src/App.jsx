@@ -25,7 +25,7 @@ const App = () => {
       <BrowserRouter>
         <TopBar />
         <Navbar />
-        <div style={{ paddingTop: '96px' }}>
+        <div style={{ paddingTop: '112px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<GalleryPage />} />

@@ -25,7 +25,10 @@ export default {
       },
       fontFamily: {
         cormorant: ['"Cormorant Garamond"', 'serif'],
-        playfair: ['"Playfair Display"', 'serif'],
+        cinzel: ['Cinzel', 'serif'],
+        'cinzel-deco': ['"Cinzel Decorative"', 'serif'],
+        dm: ['"DM Serif Display"', 'serif'],
+        nunito: ['Nunito', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
       },
       animation: {

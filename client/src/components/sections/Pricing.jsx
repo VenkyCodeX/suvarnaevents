@@ -19,7 +19,7 @@ const PricingCard = ({ name, price, suffix, features, popular, tier }) => {
       {/* Badge */}
       {popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-xs font-semibold uppercase tracking-wider"
-          style={{ background: '#CC2299', fontFamily: 'Poppins' }}>
+          style={{ background: '#CC2299', fontFamily: 'Cinzel' }}>
           Most Popular
         </div>
       )}
@@ -29,19 +29,19 @@ const PricingCard = ({ name, price, suffix, features, popular, tier }) => {
         style={{
           background: isGold ? '#F8E6F4' : '#E8E8F8',
           color: isGold ? '#CC2299' : '#1A1A8C',
-          fontFamily: 'Poppins',
+          fontFamily: 'Cinzel',
         }}>
         {name}
       </div>
 
       <div className="mb-6">
-        <span className="font-cormorant font-semibold" style={{ fontSize: '40px', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>{price}</span>
-        <span className="text-sm ml-2" style={{ color: '#888888', fontFamily: 'Poppins' }}>{suffix}</span>
+        <span className="font-semibold" style={{ fontSize: '40px', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>{price}</span>
+        <span className="text-sm ml-2" style={{ color: '#888888', fontFamily: 'Nunito' }}>{suffix}</span>
       </div>
 
       <ul className="space-y-3 mb-8">
         {features.map((f) => (
-          <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#444444', fontFamily: 'Poppins' }}>
+          <li key={f} className="flex items-start gap-3 text-sm" style={{ color: '#444444', fontFamily: 'Nunito' }}>
             <span style={{ color: '#CC2299', fontSize: '16px', lineHeight: '1.4' }}>✓</span>
             {f}
           </li>
@@ -68,17 +68,17 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="fade-up text-center mb-16">
           <div className="section-label justify-center mb-4">OUR PACKAGES</div>
-          <h2 className="font-cormorant font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+          <h2 className="font-semibold mb-3" style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
             Choose Your Experience
           </h2>
-          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>Transparent pricing. No hidden costs.</p>
+          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Nunito' }}>Transparent pricing. No hidden costs.</p>
         </div>
 
         <div ref={gridRef} className="stagger grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {PACKAGES.map((pkg) => <PricingCard key={pkg.name} {...pkg} />)}
         </div>
 
-        <p className="text-center mt-10 text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>
+        <p className="text-center mt-10 text-sm" style={{ color: '#888888', fontFamily: 'Nunito' }}>
           All packages customizable. <span style={{ color: '#CC2299', fontWeight: 600 }}>Free consultation</span> available.
         </p>
       </div>

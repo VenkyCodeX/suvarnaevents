@@ -51,25 +51,25 @@ const Inquiry = () => {
   };
 
   return (
-    <section id="inquiry" className="py-24" style={{ background: '#FFFFFF' }}>
+    <section id="inquiry" className="py-24" style={{ background: '#F8E6F4' }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={cardRef} className="fade-up rounded-xl p-8 md:p-12"
           style={{ borderTop: '3px solid #1A1A8C', boxShadow: '0 8px 40px rgba(26,26,140,0.1)', border: '1px solid #E8E8F8', borderTopColor: '#1A1A8C', borderTopWidth: '3px' }}>
 
           <div className="text-center mb-10">
-            <h2 className="font-cormorant font-semibold mb-2" style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+            <h2 className="font-semibold mb-2" style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
               Let's Plan Your Event Together
             </h2>
-            <p className="text-sm font-medium" style={{ color: '#CC2299', fontFamily: 'Poppins' }}>We respond within 2 hours ✓</p>
+            <p className="text-sm font-medium" style={{ color: '#CC2299', fontFamily: 'Nunito' }}>We respond within 2 hours ✓</p>
           </div>
 
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               {FIELDS.map(({ name, label, type, placeholder }) => (
                 <div key={name}>
-                  <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>{label}</label>
+                  <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>{label}</label>
                   <input type={type} name={name} value={form[name]} onChange={handleChange} placeholder={placeholder}
-                    style={inputStyle} onFocus={handleFocus} onBlur={handleBlur} />
+                    style={{...inputStyle, fontFamily: 'Nunito'}} onFocus={handleFocus} onBlur={handleBlur} />
                 </div>
               ))}
 

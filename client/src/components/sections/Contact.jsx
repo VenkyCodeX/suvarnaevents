@@ -7,7 +7,7 @@ const Contact = () => {
   const ref = useScrollAnimation();
 
   return (
-    <section id="contact" className="py-24" style={{ background: '#FAFAFA' }}>
+    <section id="contact" className="py-24" style={{ background: '#F8E6F4' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
@@ -26,7 +26,7 @@ const Contact = () => {
           {/* Details */}
           <div>
             <div className="section-label mb-4">FIND US</div>
-            <h2 className="font-cormorant font-semibold mb-8" style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}>
+            <h2 className="font-semibold mb-8" style={{ fontSize: 'clamp(28px, 4vw, 40px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}>
               Visit or Contact Us
             </h2>
 
@@ -36,8 +36,8 @@ const Contact = () => {
                   <MapPin size={18} style={{ color: '#CC2299' }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>Address</p>
-                  <p className="text-sm leading-relaxed" style={{ color: '#444444', fontFamily: 'Poppins' }}>{SITE.address}</p>
+                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>Address</p>
+                  <p className="text-sm leading-relaxed" style={{ color: '#444444', fontFamily: 'Nunito' }}>{SITE.address}</p>
                 </div>
               </div>
 
@@ -46,7 +46,7 @@ const Contact = () => {
                   <Phone size={18} style={{ color: '#CC2299' }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>Phone</p>
+                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>Phone</p>
                   <a href={`tel:${SITE.phone.replace(/\s/g,'')}`} className="text-sm font-semibold transition-colors duration-200"
                     style={{ color: '#CC2299', fontFamily: 'Poppins' }}
                     onMouseEnter={e => e.currentTarget.style.color = '#A01A7A'}
@@ -62,7 +62,7 @@ const Contact = () => {
                   <Clock size={18} style={{ color: '#CC2299' }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Poppins' }}>Hours</p>
+                  <p className="font-semibold text-sm mb-1" style={{ color: '#1A1A8C', fontFamily: 'Cinzel' }}>Hours</p>
                   <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
                     style={{ background: '#E8E8F8', color: '#1A1A8C', fontFamily: 'Poppins' }}>
                     Open 24 Hours · 7 Days a Week

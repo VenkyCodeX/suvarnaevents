@@ -43,7 +43,7 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="gallery" className="py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+    <section id="gallery" className="py-24 overflow-hidden" style={{ background: '#F8E6F4' }}>
       {/* Keyframes injected inline */}
       <style>{`
         @keyframes scrollLeft {
@@ -60,12 +60,12 @@ const Gallery = () => {
         <div ref={headerRef} className="fade-up text-center">
           <div className="section-label justify-center mb-4">OUR PORTFOLIO</div>
           <h2
-            className="font-cormorant font-semibold mb-3"
-            style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#1A1A8C', fontFamily: 'Cormorant Garamond' }}
+            className="font-semibold mb-3"
+            style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: '#1A1A8C', fontFamily: 'Cinzel Decorative' }}
           >
             A Glimpse of the Magic We Create
           </h2>
-          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>
+          <p className="text-sm" style={{ color: '#888888', fontFamily: 'Nunito' }}>
             Every event tells a beautiful story
           </p>
         </div>
@@ -86,11 +86,11 @@ const Gallery = () => {
         <button
           onClick={() => navigate('/gallery')}
           className="btn-navy inline-flex items-center gap-2"
-          style={{ fontSize: '15px', padding: '14px 36px' }}
+          style={{ fontSize: '14px', padding: '14px 36px', fontFamily: 'Cinzel' }}
         >
           Explore Full Gallery →
         </button>
-        <p className="mt-3 text-sm" style={{ color: '#888888', fontFamily: 'Poppins' }}>
+        <p className="mt-3 text-sm" style={{ color: '#888888', fontFamily: 'Nunito' }}>
           Browse by category — Weddings, Receptions, Birthdays & more
         </p>
       </div>
